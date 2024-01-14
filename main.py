@@ -1,7 +1,19 @@
+from validations import name_validation, email_validation, phone_validation, favorite_validation
+
 contacts = []
 
+def append_contact():
+  contact = {}
+  
+  contact["name"] = name_validation()
+  contact["email"] = email_validation()
+  contact["phone"] = phone_validation()
+  contact["favorite"] = favorite_validation()
+  
+  contacts.append(contact)
+
 while True:
-  print("\nLista de contatos:")
+  print("\nGerenciador de contatos:")
   print("1. Adicionar contato")
   print("2. Ver contatos")
   print("3. Ediar contato")
@@ -12,5 +24,8 @@ while True:
   
   option = input("Digite a sua opção: ")
   
-  if option == "7":
+  if option == "1":
+    append_contact()
+    
+  elif option == "7":
     break
