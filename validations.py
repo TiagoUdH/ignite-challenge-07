@@ -25,7 +25,7 @@ def email_validation() -> str:
   while not email_is_valid(email):
     email = input("E-mail inválido! Digite novamente o e-mail do contato: ")
   
-  return email
+  return email_is_valid(email)
 
 def phone_is_valid(phone: str) -> bool:
   try:
@@ -46,10 +46,12 @@ def phone_validation() -> str:
   
   return phone
 
-def favorite_validation() -> str:
+def favorite_validation() -> bool:
   char = input("Deseja favoritar o contato? [s/n] ")
   
   while char != "s" and char != "n":
     char = input("Preenchimento inválido! Deseja favoritar o contato? [s/n] ")
+    
+  is_favorite = char == "s"
   
-  return char
+  return is_favorite
