@@ -90,6 +90,18 @@ def view_favorites_contacts():
     
   return
 
+def delete_contact():
+  view_contacts()
+  
+  print()
+  
+  index = recieve_index(contacts)
+  contacts.remove(contacts[index])
+  
+  print("Contato apagado com sucesso!")
+  
+  return
+
 while True:
   print("\nGerenciador de contatos:")
   print("1. Adicionar contato")
@@ -122,6 +134,10 @@ while True:
   elif option == "5":
     if has_contact():
       view_favorites_contacts()
+      
+  elif option == "6":
+    if has_contact():
+      delete_contact()
     
   elif option == "7":
     break
