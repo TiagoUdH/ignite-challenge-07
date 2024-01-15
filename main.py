@@ -58,6 +58,8 @@ def edit_contact():
   contacts[index] = contact
   print("Contato editado com sucesso!")
   
+  return
+  
 def update_favorite():
   view_contacts()
   
@@ -70,6 +72,23 @@ def update_favorite():
   
   contacts[index] = contact
   print("Contato editado com sucesso!")
+  
+  return
+  
+def view_favorites_contacts():
+  favorites_contacts = list(filter(lambda contact: contact["favorite"], contacts))
+  
+  if not favorites_contacts:
+    print("Você não possui um contato favorito")
+    
+    return
+  
+  print("Lista de contatos favoritos:")
+  
+  for index, contact in enumerate(favorites_contacts):
+    print(f"{index + 1}. {contact["name"]}")
+    
+  return
 
 while True:
   print("\nGerenciador de contatos:")
@@ -99,6 +118,10 @@ while True:
   elif option == "4":
     if has_contact():
       update_favorite()
+      
+  elif option == "5":
+    if has_contact():
+      view_favorites_contacts()
     
   elif option == "7":
     break
