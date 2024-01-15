@@ -30,7 +30,7 @@ def view_contacts():
   for index, contact in enumerate(contacts):
     favorite = "★" if contact["favorite"] else "☆"
     
-    print(f"{index + 1}. {contact["email"]} {favorite}")
+    print(f"{index + 1}. {contact["name"]} {favorite}")
     
   return
 
@@ -54,6 +54,19 @@ def edit_contact():
   favorite = "" if contact["favorite"] else "não"
   print(f"O contato {favorite}está entre os favoritos")
   contact["favorite"] = favorite_validation()
+  
+  contacts[index] = contact
+  print("Contato editado com sucesso!")
+  
+def update_favorite():
+  view_contacts()
+  
+  print()
+  
+  index = recieve_index(contacts)
+  contact = contacts[index]
+  
+  contact["favorite"] = not contact["favorite"]
   
   contacts[index] = contact
   print("Contato editado com sucesso!")
@@ -82,6 +95,10 @@ while True:
   elif option == "3":
     if has_contact():
       edit_contact()
+      
+  elif option == "4":
+    if has_contact():
+      update_favorite()
     
   elif option == "7":
     break
